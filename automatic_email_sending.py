@@ -16,6 +16,9 @@ from openpyxl.utils import get_column_letter
 
 filename = f"Alarms_{(dt.now() - timedelta(days=1)).strftime('%d.%m.%y')}"
 
+if not os.path.exists('_internal'):
+    os.makedirs('_internal')
+
 # Configure logging globally
 logging.basicConfig(filename='_internal\\app_log.log',
                     level=logging.INFO,
@@ -41,6 +44,7 @@ def log(message, *, e: bool = False, i: bool = False):
         logging.error(message)
     if i:
         logging.info(message)
+    print(message)
 
 
 def _fetch_data_from_db(*, driver, server, database, username, password, query):
@@ -56,25 +60,23 @@ def _fetch_data_from_db(*, driver, server, database, username, password, query):
         cursor.close()
         connection.close()
         log(f'Fetched from database successfully ({server} -> {database})', i=True)
-        print(f'Fetched from database successfully ({server} -> {database})')
 
         return columns, data
 
     except Exception as e:
+        log(f'Make sure that SERVER ({server}) and DATABASE ({database}) are set correctly.', e=True)
         log(f'fetch_data_from_db(): {e}', e=True)
-        print(f'fetch_data_from_db(): {e}')
         return None, None
 
 
 def create_xlsx(db_data):
-    if not os.path.exists('_internal/Data\\'):
-        os.makedirs('_internal/Data')
+    if not os.path.exists('_internal\\Data\\'):
+        os.makedirs('_internal\\Data')
 
     try:
         columns, data = db_data
         if not columns or not data:
-            log("Failed to fetch data from database.", e=True)
-            print("Failed to fetch data from database.")
+            log("Data received is empty. Failed to fetch data from database.", e=True)
             return None
 
         workbook = Workbook()
@@ -94,8 +96,9 @@ def create_xlsx(db_data):
             cell.font = bold_font  # Apply bold font to header row
 
         # Define column indexes for `alarm_class` and `log_action`
-        alarm_class_idx = columns.index('alarm_class') + 1
-        log_action_idx = columns.index('log_action') + 1
+        alarm_class_idx = columns.index('Приоритет') + 1
+        #log_action_idx = columns.index('log_action') + 1
+        status_idx = columns.index('Статус') + 1
 
         # Append data rows and apply conditional formatting
         for row_idx, row in enumerate(data, start=2):
@@ -106,9 +109,10 @@ def create_xlsx(db_data):
 
             # Apply conditional formatting
             alarm_class = row_list[alarm_class_idx - 1]
-            log_action = row_list[log_action_idx - 1]
+            # log_action = row_list[log_action_idx - 1]
+            status = row_list[status_idx - 1]
 
-            if log_action == 'G':
+            if status.lower() == 'появление':
                 if alarm_class.lower() == 'high':
                     fill = fill_red
                 elif alarm_class.lower() == 'med':
@@ -121,7 +125,7 @@ def create_xlsx(db_data):
                 # Apply fill to the entire row
                 for col in range(1, len(columns) + 1):
                     worksheet.cell(row=row_idx, column=col).fill = fill
-
+        print(columns)
         # Adjust column widths
         for col in range(1, len(columns) + 1):
             max_length = 0
@@ -134,10 +138,8 @@ def create_xlsx(db_data):
                             max_length = len(value)
                 except Exception as e:
                     log(f"Error while measuring length of cell value: {e}", e=True)
-                    print(f"Error while measuring length of cell value: {e}")
             adjusted_width = (max_length + 2)
             worksheet.column_dimensions[column].width = adjusted_width
-            # log(f"Column {column}: Width set to {adjusted_width}")
 
         # Add borders
         thin = Side(border_style="thin", color="000000")
@@ -147,14 +149,12 @@ def create_xlsx(db_data):
             for col in range(1, len(columns) + 1):
                 worksheet.cell(row=row, column=col).border = border
 
-        save_dir = os.path.join('.', '_internal/Data', f"{filename}.xlsx")
+        save_dir = os.path.join('.', '_internal\\Data', f"{filename}.xlsx")
         workbook.save(save_dir)
         log(f'File successfully saved into directory ("{save_dir}")', i=True)
-        print(f'File successfully saved into directory ("{save_dir}")')
         return save_dir
     except Exception as e:
         log(f'create_xlsx(): {e}', e=True)
-        print(f'create_xlsx(): {e}')
         return None
 
 
@@ -170,10 +170,8 @@ def attach_file(*, message, path):
                 part.add_header('Content-Disposition', f'attachment; filename={file_name}')
                 message.attach(part)
             log(f'File "{file_name}" ({round(file_size_mb, 2)} MB) has been attached to the email.', i=True)
-            print(f'File "{file_name}" ({round(file_size_mb, 2)} MB) has been attached to the email.')
         except Exception as e:
             log(f'attach_file(): {e}', e=True)
-            print(f'attach_file(): {e}')
 
 
 def send_daily_email(*, config, msg):
@@ -192,12 +190,10 @@ def send_daily_email(*, config, msg):
             msg['To'] = recipient
             server.sendmail(config['Credentials']['username'], recipient, msg.as_string())
             log(f"Email sent successfully to {recipient}", i=True)
-            print(f"Email sent successfully to {recipient}")
             time.sleep(1)
 
         server.quit()
         log("SMTP server connection closed.", i=True)
-        print("SMTP server connection closed.")
 
     except Exception as e:
         log(f'send_daily_email(): {e}', e=True)
@@ -209,13 +205,13 @@ def main():
 
         # LOADING DATA FROM CONFIG FILE
         # Detect encoding
-        with open('_internal/config.ini', 'rb') as file:
+        with open('_internal\\config.ini', 'rb') as file:
             result = chardet.detect(file.read())
         encoding = result['encoding']
 
         # Read with detected encoding
         config = configparser.ConfigParser()
-        with open('_internal/config.ini', 'r', encoding=encoding) as configfile:
+        with open('_internal\\config.ini', 'r', encoding=encoding) as configfile:
             config.read_file(configfile)
 
         # ESTABLISHING THE CONNECTION WITH DATABASE
@@ -250,18 +246,34 @@ def main():
         if xlsx_file:
             attach_file(message=msg, path=xlsx_file)
             send_daily_email(config=config, msg=msg)
-            log('============================================================================', i=True)
-            print('Program finished.')
+            log('=======================PROGRAM FINISHED=======================', i=True)
             time.sleep(1)
         else:
             log('Failed to create Excel file, no email sent.', e=True)
-            print('Failed to create Excel file, no email sent.')
 
     except Exception as e:
         log(f'main(): {e}', e=True)
-        print(f'Error: {e}')
 
 
 if __name__ == '__main__':
     main()
+    print(
+    r'''                                  
+                         &,                       
+                       &.  &                      
+                     &.  &  (%                    
+                   &  #%(.#%  %%                  
+                 &  #%##%%# %%  #(                
+               %  /%##%%##%## #(  #               
+             %  *%##%########## #   (             
+           %  ,%%%##%%##%%##%%(%# (  (#           
+         %  ,#%%##%%##%%(#%%(%%%(%,(#  ##         
+       #  *#%%##%%((%%(#%%#%%%#%%##% ##  #/       
+     #  *#%%#(%%((%%(%%%#%%%#%%##%%##% #/  %      
+   #  *(&&((&&(#&&#%&&#&&%#&&##&&####%%& %  .%    
+ #  *(&&((&&##&&#%&&#&&%#&&##&&%%&&%%&&%&&.%  %%  
+  /(&&##&&##&&#&&&#&&%#&&%%&&%%&&%&&&%%#&%&*%&  &&
+    '''
+    )
+    time.sleep(1.5)
 
