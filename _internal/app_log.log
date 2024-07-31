@@ -1,0 +1,76 @@
+2024-07-30 16:34:24,338 - ERROR - main(): [Errno 2] No such file or directory: '_internal\\config.ini'
+2024-07-30 16:35:40,125 - INFO - Fetched from database successfully (WIN-UBBA0UD2D9R\CIMPLICITY -> CIMPLICITY)
+2024-07-30 16:35:40,166 - INFO - File successfully saved into directory (".\_internal\Data\Alarms_29.07.24.xlsx")
+2024-07-30 16:35:40,173 - INFO - File "Alarms_29.07.24.xlsx" (0.01 MB) has been attached to the email.
+2024-07-30 16:35:40,174 - INFO - Attempting to connect to the SMTP server...
+2024-07-30 16:35:40,543 - INFO - SMTP server connection established.
+2024-07-30 16:35:40,847 - INFO - Started TLS session.
+2024-07-30 16:35:41,603 - INFO - Logged into SMTP server.
+2024-07-30 16:35:43,643 - INFO - Email sent successfully to pangleb1@gmail.com
+2024-07-30 16:35:45,140 - INFO - Email sent successfully to g.pan@norsec.kz
+2024-07-30 16:35:46,627 - INFO - Email sent successfully to  pan.gleb@mail.ru
+2024-07-30 16:35:47,708 - INFO - SMTP server connection closed.
+2024-07-30 16:35:47,708 - INFO - =======================PROGRAM FINISHED=======================
+2024-07-30 17:00:06,656 - INFO - Fetched from database successfully (WIN-UBBA0UD2D9R\CIMPLICITY -> CIMPLICITY)
+2024-07-30 17:00:06,680 - INFO - File successfully saved into directory (".\_internal\Data\Alarms_29.07.24.xlsx")
+2024-07-30 17:00:06,688 - INFO - File "Alarms_29.07.24.xlsx" (0.01 MB) has been attached to the email.
+2024-07-30 17:00:06,688 - INFO - Attempting to connect to the SMTP server...
+2024-07-30 17:00:07,062 - INFO - SMTP server connection established.
+2024-07-30 17:00:07,372 - INFO - Started TLS session.
+2024-07-30 17:00:07,857 - INFO - Logged into SMTP server.
+2024-07-30 17:00:10,130 - INFO - Email sent successfully to g.pan@norsec.kz
+2024-07-30 17:00:11,647 - INFO - Email sent successfully to i.kumarova@norsec.kz
+2024-07-30 17:00:12,732 - INFO - SMTP server connection closed.
+2024-07-30 17:00:12,733 - INFO - =======================PROGRAM FINISHED=======================
+2024-07-31 09:12:06,234 - INFO - Fetched from database successfully (WIN-UBBA0UD2D9R\CIMPLICITY -> CIMPLICITY)
+2024-07-31 09:12:06,278 - INFO - File successfully saved into directory (".\_internal\Data\Alarms_30.07.24.xlsx")
+2024-07-31 09:12:06,286 - INFO - File "Alarms_30.07.24.xlsx" (0.01 MB) has been attached to the email.
+2024-07-31 09:12:06,286 - INFO - Attempting to connect to the SMTP server...
+2024-07-31 09:12:06,640 - INFO - SMTP server connection established.
+2024-07-31 09:12:06,948 - INFO - Started TLS session.
+2024-07-31 09:12:07,992 - INFO - Logged into SMTP server.
+2024-07-31 09:12:10,022 - INFO - Email sent successfully to g.pan@norsec.kz
+2024-07-31 09:12:11,524 - INFO - Email sent successfully to i.kumarova@norsec.kz
+2024-07-31 09:12:12,609 - INFO - SMTP server connection closed.
+2024-07-31 09:12:12,609 - INFO - =======================PROGRAM FINISHED=======================
+2024-07-31 09:12:54,124 - INFO - Fetched from database successfully (WIN-UBBA0UD2D9R\CIMPLICITY -> CIMPLICITY)
+2024-07-31 09:12:54,148 - INFO - File successfully saved into directory (".\_internal\Data\Alarms_30.07.24.xlsx")
+2024-07-31 09:12:54,155 - INFO - File "Alarms_30.07.24.xlsx" (0.01 MB) has been attached to the email.
+2024-07-31 09:12:54,156 - INFO - Attempting to connect to the SMTP server...
+2024-07-31 09:12:54,517 - INFO - SMTP server connection established.
+2024-07-31 09:12:54,831 - INFO - Started TLS session.
+2024-07-31 09:12:55,333 - INFO - Logged into SMTP server.
+2024-07-31 09:12:57,374 - INFO - Email sent successfully to g.pan@norsec.kz
+2024-07-31 09:12:58,840 - INFO - Email sent successfully to pangleb1@gmail.com
+2024-07-31 09:12:59,927 - INFO - SMTP server connection closed.
+2024-07-31 09:12:59,928 - INFO - =======================PROGRAM FINISHED=======================
+2024-07-31 09:16:34,058 - INFO - Fetched from database successfully (WIN-UBBA0UD2D9R\CIMPLICITY -> CIMPLICITY)
+2024-07-31 09:16:34,082 - INFO - File successfully saved into directory (".\_internal\Data\Alarms_30.07.24.xlsx")
+2024-07-31 09:16:34,090 - INFO - File "Alarms_30.07.24.xlsx" (0.01 MB) has been attached to the email.
+2024-07-31 09:16:34,090 - INFO - Attempting to connect to the SMTP server...
+2024-07-31 09:16:34,446 - INFO - SMTP server connection established.
+2024-07-31 09:16:34,754 - INFO - Started TLS session.
+2024-07-31 09:16:36,126 - INFO - Logged into SMTP server.
+2024-07-31 09:16:38,149 - INFO - Email sent successfully to pan.gleb@mail.ru
+2024-07-31 09:16:39,233 - INFO - SMTP server connection closed.
+2024-07-31 09:16:39,234 - INFO - =======================PROGRAM FINISHED=======================
+2024-07-31 11:53:09,527 - INFO - Fetched from database successfully (WIN-UBBA0UD2D9R\CIMPLICITY -> CIMPLICITY)
+2024-07-31 11:53:09,550 - INFO - File successfully saved into directory (".\_internal\Data\Alarms_30.07.24.xlsx")
+2024-07-31 12:03:27,805 - INFO - Fetched from database successfully (WIN-UBBA0UD2D9R\CIMPLICITY -> CIMPLICITY)
+2024-07-31 12:03:27,828 - INFO - File successfully saved into directory (".\_internal\Data\Alarms_30.07.24.xlsx")
+2024-07-31 12:06:41,879 - INFO - Fetched from database successfully (WIN-UBBA0UD2D9R\CIMPLICITY -> CIMPLICITY)
+2024-07-31 12:06:41,901 - INFO - File successfully saved into directory (".\_internal\Data\Alarms_30.07.24.xlsx")
+2024-07-31 12:08:52,008 - INFO - Fetched from database successfully (WIN-UBBA0UD2D9R\CIMPLICITY -> CIMPLICITY)
+2024-07-31 12:08:52,031 - INFO - File successfully saved into directory (".\_internal\Data\Alarms_30.07.24.xlsx")
+2024-07-31 12:10:09,327 - INFO - Fetched from database successfully (WIN-UBBA0UD2D9R\CIMPLICITY -> CIMPLICITY)
+2024-07-31 12:10:09,360 - INFO - File successfully saved into directory (".\_internal\Data\Alarms_30.07.24.xlsx")
+2024-07-31 12:10:09,379 - INFO - File "Alarms_30.07.24.xlsx" (0.01 MB) has been attached to the email.
+2024-07-31 12:10:09,379 - INFO - Attempting to connect to the SMTP server...
+2024-07-31 12:10:09,745 - INFO - SMTP server connection established.
+2024-07-31 12:10:10,064 - INFO - Started TLS session.
+2024-07-31 12:10:10,527 - INFO - Logged into SMTP server.
+2024-07-31 12:10:12,901 - INFO - Email sent successfully to pan.gleb@mail.ru
+2024-07-31 12:10:14,720 - INFO - Email sent successfully to g.pan@norsec.kz
+2024-07-31 12:10:16,310 - INFO - Email sent successfully to pangleb1@gmail.com
+2024-07-31 12:10:17,391 - INFO - SMTP server connection closed.
+2024-07-31 12:10:17,391 - INFO - =======================PROGRAM FINISHED=======================
