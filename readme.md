@@ -1,7 +1,7 @@
 # Project name: Automatic_email_sending
 ## Version: 1.2
 ## Date: 12.08.2024
-Исходный код: 
+Исходный код: https://github.com/gleb-pan/GenReport
 
 Этот проект нацелен на ежедневную отправку выгрузки архивов событий из базы данных MS SQL.
 Главный принцип работы приложения: SCADA система ежедневно запускает приложение automatic_email_sending,
