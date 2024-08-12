@@ -1,7 +1,0 @@
-Sub Main()
-'CreateObject("WScript.Shell").Exec "C:\Users\Public\Documents\Auto_email_send\main.exe"
-
-Set objShell = CreateObject("Shell.Application")
-objShell.ShellExecute "C:\Users\Public\Documents\Auto_email_send\main.exe", "", "C:\Users\Public\Documents\Auto_email_send", "runas", 0
-
-End Sub
