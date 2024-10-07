@@ -39,6 +39,8 @@ Automatic_email_sending_v1.2
 time.sleep(1.5)
 
 
+
+
 def log(message, *, e: bool = False, i: bool = False):
     if e:
         logging.error(message)
